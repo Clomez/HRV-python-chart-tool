@@ -1,0 +1,1 @@
+cat night.json | jq '[.[] | .hrvData[] | {startTime, avg: (.samples | add / length), median: (.samples | sort | if length % 2 == 0 then ((.[length / 2 - 1] + .[length / 2]) / 2) else .[length / 2] end)}]' > stats.json
